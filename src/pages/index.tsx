@@ -1,8 +1,5 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const ref = useRef<any>(null);
@@ -148,13 +145,21 @@ export default function Home() {
                     />
                     <button
                       onClick={(e: any) => handleAdd(allRefs[index], index, 1)}
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "600",
+                      }}
                     >
-                      Add
+                      Punishment
                     </button>
                     <button
                       onClick={(e: any) => handleAdd(allRefs[index], index, -1)}
+                      style={{
+                        fontSize: "17px",
+                        fontWeight: "600",
+                      }}
                     >
-                      Punishment
+                      Reward
                     </button>
                   </div>
                 </div>
@@ -174,16 +179,48 @@ export default function Home() {
                 flex: "1 1",
               }}
             >
-              <button onClick={handleReset}>Reset</button>
+              <button
+                onClick={handleReset}
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Reset
+              </button>
             </div>
             <div style={{ flex: "1 1" }}>
-              <button onClick={handleAddGroup}>Add Group</button>
+              <button
+                onClick={handleAddGroup}
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Add Group
+              </button>
             </div>
             <div style={{ flex: "1 1" }}>
-              <button onClick={handleRemoveGroup}>Remove Group</button>
+              <button
+                onClick={handleRemoveGroup}
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Remove Group
+              </button>
             </div>
             <div style={{ flex: "1 1" }}>
-              <button onClick={handleFinish}>Finish It</button>
+              <button
+                onClick={handleFinish}
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Finish It
+              </button>
             </div>
           </div>
           {winner && (
@@ -198,59 +235,104 @@ export default function Home() {
               Winner Group {winner}
             </div>
           )}
-          <div>ScoreBoard</div>
           <div
             style={{
+              width: "100%",
               display: "flex",
-              gap: "20px",
-              height: "max-content",
-              flexWrap: "wrap",
-              padding: "10px",
+              flexDirection: "column",
+              alignItems: "center",
               justifyContent: "center",
+              border: "3px solid white",
             }}
           >
-            {name.map((item: any, index: any) => {
-              return (
-                <div
-                  key={index}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "10px",
-                    alignItems: "center",
-                  }}
-                >
-                  <div>Group {index + 1}</div>
-                  <div>
-                    {item.map((item: any, index: any) => {
-                      return <div key={index}>{item}</div>;
-                    })}
-                  </div>
+            <div
+              style={{
+                width: "100%",
+                textAlign: "center",
+                fontSize: "20px",
+                borderBottom: "2px solid white",
+                padding: "10px",
+              }}
+            >
+              ScoreBoard
+            </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "20px",
+                height: "max-content",
+                flexWrap: "wrap",
+                padding: "20px",
+                justifyContent: "space-between",
+                width: "100%",
+              }}
+            >
+              {name.map((item: any, index: any) => {
+                return (
                   <div
+                    key={index}
                     style={{
-                      borderTop: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
-                      width: "100%",
+                      gap: "10px",
+                      alignItems: "center",
+                      justifyContent: "space-between",
                     }}
                   >
-                    {/* <div>Toplam </div> */}
                     <div
                       style={{
-                        width: "100%",
-                        textAlign: "center",
-                        paddingTop: "10px",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "10px",
                       }}
                     >
-                      {item.reduce(
-                        (acc: any, currentValue: any) => acc + currentValue,
-                        0
-                      )}
+                      <div
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Group {index + 1}
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "5px",
+                          alignItems: "flex-end",
+                        }}
+                      >
+                        {item.map((item: any, index: any) => {
+                          return <div key={index}>{item}</div>;
+                        })}
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        borderTop: "1px solid white",
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "100%",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "100%",
+                          textAlign: "center",
+                          paddingTop: "10px",
+                          alignItems: "flex-end",
+                        }}
+                      >
+                        {item.reduce(
+                          (acc: any, currentValue: any) => acc + currentValue,
+                          0
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
